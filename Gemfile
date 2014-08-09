@@ -27,6 +27,7 @@ gem "groupdate"
 gem "has_scope"
 gem "axlsx_rails"
 gem "chosen-rails"
+gem 'carrierwave'
 
 # Turbolinks
 gem "jquery-turbolinks"
