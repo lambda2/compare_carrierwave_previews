@@ -289,7 +289,7 @@ DEPENDENCIES
   axlsx_rails
   better_errors
   binding_of_caller
-  bootstrap-sass
+  bootstrap-sass (~> 3.2.0)
   capistrano
   capistrano-ext
   capistrano-notifier
@@ -322,7 +322,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rb-fsevent
   rvm-capistrano
-  sass-rails (~> 4.0.3)
+  sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
   sidekiq
   simple_form (= 3.1.0.rc1)
