@@ -4,6 +4,8 @@ class VideoUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::Video  # for your video processing
   include CarrierWave::Video::Thumbnailer
+
+  process encode_video: [:mp4, callbacks: { after_transcode: :set_success } ]
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -51,11 +53,26 @@ class VideoUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  (0..100).step(10).each do |progress|
+    version "thumb_#{progress}".to_sym do
+      process thumbnail: [{format: 'png', seek: "#{progress}%", quality: 10, size: 192, strip: true, logger: Rails.logger}]
+      def full_filename for_file
+        png_name for_file, version_name
+      end
+    end
+  end
 
-  version :thumb do
-    process thumbnail: [{format: 'png', quality: 10, size: 192, strip: true, logger: Rails.logger}]
+  version :low_d do
+    process encode_video: [:mp4, callbacks: { after_transcode: :set_success }, resolution: "720×480"]
     def full_filename for_file
-      png_name for_file, version_name
+      %Q{#{version_name}_#{for_file}}
+    end
+  end
+
+  version :gif do
+    process encode_video: [:gif, :custom => ' -vf scale=320:-1 -t 10 -r 10']
+    def full_filename for_file
+      %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.gif}
     end
   end
 
@@ -65,6 +82,6 @@ class VideoUploader < CarrierWave::Uploader::Base
 
   # Petit helper pour avoir l'url du thumbnail
   def thumb_url
-    "#{store_dir}/#{png_name @file.filename, 'thumb'}"
+    "#{store_dir}/#{png_name @file.filename, 'thumb_0'}"
   end
 end
