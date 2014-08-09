@@ -1,17 +1,16 @@
 %h1 Listing videos
 
-%table
-  %tr
-    %th
-    %th
-    %th
-
+.videos-list
   - @videos.each do |video|
-    %tr
-      %td= link_to 'Show', video
-      %td= link_to 'Edit', edit_video_path(video)
-      %td= link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
+    .col-md-3.video-item
+      .head
+        = video.name
+      .main
+        %a{:href => video.video.url}
+          %img{:src => video.video.thumb_url, :alt => video.name}
+      .footer
+        = link_to 'Show', video
+        = link_to 'Edit', edit_video_path(video)
+        = link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 = link_to 'New Video', new_video_path

@@ -27,7 +27,11 @@ gem "groupdate"
 gem "has_scope"
 gem "axlsx_rails"
 gem "chosen-rails"
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'sass-rails', '>= 3.2'
 gem 'carrierwave'
+gem 'carrierwave-video'
+gem 'carrierwave-video-thumbnailer'
 
 # Turbolinks
 gem "jquery-turbolinks"
