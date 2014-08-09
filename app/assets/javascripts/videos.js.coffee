@@ -3,11 +3,4 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $("[data-preview]").hover ->
-    console.log("Hover")
-    setTimeout =>
-      current = parseInt($(@).attr("src").split("_").slice(-1)) + 10
-      console.log("current percentage => #{current}")
-      $(@).attr("src", "#{$(@).attr('data-preview')}_#{current % 110}")
-      $(@).trigger("hover")
-    , 1000
+  thumbs = new Core.Media.Thumbnail(500)

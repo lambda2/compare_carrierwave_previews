@@ -69,15 +69,15 @@ class VideoUploader < CarrierWave::Uploader::Base
     end
   end
 
-  version :gif do
-    process encode_video: [:gif, :custom => ' -vf scale=320:-1 -t 10 -r 10']
-    def full_filename for_file
-      %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.gif}
-    end
-  end
+  # version :gif do
+  #   process encode_video: [:gif, :custom => ' -vf scale=320:-1 -t 10 -r 10']
+  #   def full_filename for_file
+  #     %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.gif}
+  #   end
+  # end
 
   def png_name for_file, version_name
-    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+    %Q{#{for_file.chomp(File.extname(for_file))}_s#{version_name}.png}
   end
 
   # Petit helper pour avoir l'url du thumbnail
