@@ -6,8 +6,11 @@
       .head
         = video.name
       .main
-        %a{:href => video.video.url}
-          %img{"data-preview" => video.video.thumb_url[0..-3], :src => video.video.thumb_url, :alt => video.name}
+        - if video.video_processing
+          %p.centered Upload en cours...
+        - else
+          %a{:href => video.video.url}
+            %img{"data-preview" => video.video.thumb_url[0..-3], :src => video.video.thumb_url, :alt => video.name}
       .footer
         = link_to 'Show', video
         = link_to 'Edit', edit_video_path(video)

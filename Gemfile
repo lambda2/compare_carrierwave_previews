@@ -31,6 +31,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'carrierwave'
 gem 'carrierwave-video'
 gem 'carrierwave-video-thumbnailer'
+gem 'carrierwave_backgrounder'
 
 # Turbolinks
 gem "jquery-turbolinks"

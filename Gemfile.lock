@@ -79,6 +79,8 @@ GEM
       streamio-ffmpeg
     carrierwave-video-thumbnailer (0.1.4)
       carrierwave
+    carrierwave_backgrounder (0.4.1)
+      carrierwave (~> 0.5)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     chosen-rails (1.1.0)
@@ -297,6 +299,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-video
   carrierwave-video-thumbnailer
+  carrierwave_backgrounder
   chosen-rails
   coffee-rails (~> 4.0.0)
   colorize
