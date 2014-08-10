@@ -1,9 +1,13 @@
-== Requirements:
+Requirements:
+---------------
+
 - `brew install ffmpeg`
 - `brew install ffmpegthumbnailer`
 - `brew install redis`
 
-== Setup:
+Setup:
+---------------
+
 Ensuite, en meme temps que le serveur web, lancer redis et sidekiq.
 Sidekiq utilise une queue "carrierwave", donc le lancer en ligne de commande, directement dans le dossier du projet rails, avec la commande `sidekiq -q carrierwave`.
 
